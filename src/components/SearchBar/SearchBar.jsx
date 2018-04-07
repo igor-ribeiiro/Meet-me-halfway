@@ -3,7 +3,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 import '../../App.css'
 
 const renderSuggestion = ({ formattedSuggestion }) => (
-    <div className="Demo__suggestion-item">
+    <div className="suggestion-item">
       <i className="fa fa-map-marker Demo__suggestion-icon" />
       <strong>{formattedSuggestion.mainText}</strong>{' '}
       <small className="text-muted">{formattedSuggestion.secondaryText}</small>
@@ -13,9 +13,9 @@ const renderSuggestion = ({ formattedSuggestion }) => (
   
   
   const cssClasses = {
-    root: 'form-group',
+    root: 'search-bar',
     input: 'Demo__search-input',
-    autocompleteContainer: 'Demo__autocomplete-container',
+    autocompleteContainer: 'autocomplete-container',
   };
   
   const shouldFetchSuggestions = ({ value }) => value.length > 2;
