@@ -1,5 +1,4 @@
-{
-	"cafes": [
+cafes = [
 		{
 			"lat": -23.5475643,
 			"lon": -46.63562779999995,
@@ -63,4 +62,3 @@
 			"desc":"Domênica Café - Rua Doutor José de Queirós Aranha - Vila Mariana, São Paulo - State of São Paulo, Brazil"
 		}
 	]
-}
