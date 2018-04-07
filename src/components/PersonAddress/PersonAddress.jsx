@@ -4,7 +4,10 @@ import SearchBar from '../SearchBar/SearchBar';
 
 class PersonAddress extends Component {
     render(){
-        return <SearchBar handleInput= {(lat, lng) => {alert("olá");}} />
+        return <SearchBar handleInput= {(lat, lng) => {
+        	window.globalLat[0] = lat; window.globalLon[0] = 0;
+        	console.log(window.globalLat[0]);
+        }} />
     }
 }
 
