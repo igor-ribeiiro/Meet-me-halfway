@@ -100,10 +100,10 @@ const renderSuggestion = ({ formattedSuggestion }) => (
         value: this.state.address,
         onChange: this.handleChange,
         onBlur: () => {
-          console.log('Blur event!'); // eslint-disable-line no-console
+          // console.log('Blur event!'); // eslint-disable-line no-console
         },
         onFocus: () => {
-          console.log('Focused!'); // eslint-disable-line no-console
+          // console.log('Focused!'); // eslint-disable-line no-console
         },
         autoFocus: true,
         placeholder: 'Search Places',

@@ -35,8 +35,6 @@ class PlacesList extends Component {
       </li>
     );
 
-
-
     return (
       <ul>{listItems}</ul>
     );
@@ -89,7 +87,7 @@ class PlacesList extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-7 map-box mx-0 px-0">
-                <MapContainer/>
+                <MapContainer markers={this.props.markers}/>
               </div>
               <div className="col-md-12 listing-block">
                 <ul>
