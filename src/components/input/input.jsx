@@ -6,6 +6,7 @@ class Input extends Component {
         super(props)
         this.state = { address: 'San Francisco, CA' }
         this.onChange = (address) => this.setState({ address })
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
       }
     
       handleFormSubmit = (event) => {

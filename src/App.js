@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Input from './components/input.jsx'
 import SearchBar from './components/SearchBar/SearchBar.jsx';
 import PersonAddress from './components/PersonAddress/PersonAddress.jsx';
+import Header from './components/header/header.jsx'
+import Main from './components/main/main.jsx'
+import Map from './components/map/map.jsx'
 
 class App extends Component {
-
-
-
   render() {
-    let a = 2;
     return (
       <div className="App">
-          <PersonAddress />
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code>  and save to reload.
-        </p>
+        <Header/>
+        <Main/>
       </div>
     );
   }
