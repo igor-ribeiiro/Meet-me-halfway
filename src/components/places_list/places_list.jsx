@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
 
+import "./places_list.css"
+
+import img1 from './gatinho1.jpeg';
+import img2 from './gatinho2.jpg';
+import img3 from './gatinho3.jpeg';
+
+
 class PlacesList extends Component {
   constructor(props) {
     super(props);
     this.getPlacesList = this.getPlacesList.bind(this);
   }
 
-  getPlacesList() {
-    const numbers = this.props.numbers;
-    const listItems = numbers.map((number) =>
-      <li key={number.toString()}>
-        {number}
+  getPlacesList(places) {
+    const listItems = places.map((place) =>
+      <li key={place.name.toString()}>
+        <img src={place.photo} alt="Smiley face"/>
+        <h3>{place.name}</h3>
+        <p>{place.address}</p>
+
       </li>
     );
     return (
@@ -19,41 +28,27 @@ class PlacesList extends Component {
   }
 
   render() {
+    let places = [
+      {
+        "name": "name1",
+        "address": "rua 1",
+        "photo": img1
+      },
+      {
+        "name": "name2",
+        "address": "rua 2",
+        "photo": img2
+      },
+      {
+        "name": "name3",
+        "address": "rua 3",
+        "photo": img3
+      }
+    ];
+
     return (
       <div className="PlacesList">
-        {this.getPlacesList()}
-
-
-        <div>
-          <ul>
-            <li>
-              <img src="http://lorempixum.com/100/100/nature/1" />
-              <h3>Headline</h3>
-              <p>Lorem ipsum dolor sit amet...</p>
-            </li>
-
-            <li>
-              <img src="http://lorempixum.com/100/100/nature/2" />
-              <h3>Headline</h3>
-              <p>Lorem ipsum dolor sit amet...</p>
-            </li>
-
-            <li>
-              <img src="http://lorempixum.com/100/100/nature/3" />
-              <h3>Headline</h3>
-              <p>Lorem ipsum dolor sit amet...</p>
-            </li>
-
-            <li>
-              <img src="http://lorempixum.com/100/100/nature/4" />
-              <h3>Headline</h3>
-              <p>Lorem ipsum dolor sit amet...</p>
-            </li>
-          </ul>
-        </div>
-
-
-
+        {this.getPlacesList(places)}
       </div>
     );
   }

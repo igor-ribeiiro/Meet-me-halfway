@@ -9,8 +9,8 @@ class Main extends Component {
     return (
       <div className="Main">
         <PersonAddress/>
+        <PlacesList/>
         <MapContainer/>
-        <PlacesList numbers={[1, 2, 3, 4, 5]}/>
       </div>
     );
   }
