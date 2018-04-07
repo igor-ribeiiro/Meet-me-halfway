@@ -52,7 +52,7 @@ const renderSuggestion = ({ formattedSuggestion }) => (
       geocodeByAddress(address)
         .then(results => getLatLng(results[0]))
         .then(({ lat, lng }) => {
-          this.props.handleInput(lat, lng);
+          this.props.handleInput(lat, lng, this.props.index);
           console.log('Geocode Success', { lat, lng }); // eslint-disable-line no-console
           this.setState({
             geocodeResults: this.renderGeocodeSuccess(lat, lng),
