@@ -7,8 +7,29 @@ class Main extends Component {
   render() {
     return (
       <div className="Main">
-        <PersonAddress/>
-        <PlacesList/>
+        <div class="row">
+          <div class="col-md-6">
+            <PersonAddress/>
+          </div>
+          <div class="col-md-6">
+            <PersonAddress/>
+          </div>
+        </div>
+        <br></br>
+        <div class="row">
+          <div class="col-md-6">
+            <PersonAddress/>
+          </div>
+          <div class="col-md-6">
+            <PersonAddress/>
+          </div>
+        </div>
+        <br></br>
+        <div class="row">
+          <div class="col-md-12">
+            <PlacesList/>
+          </div>
+        </div>
       </div>
     );
   }
