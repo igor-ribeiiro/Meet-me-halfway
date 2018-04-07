@@ -9,7 +9,7 @@ export class MapContainer extends Component {
       <Map google={this.props.google}
                   initialCenter={{
                     lat: -23.5505200,
-                    lon: -46.6333090
+                    lng: -46.6333090
                   }}
                   zoom={13}>
         <Marker onClick={this.onMarkerClick}
@@ -18,7 +18,7 @@ export class MapContainer extends Component {
           name={'Dolores park'}
           position={{
             lat: -23.5705200,
-            lon: -46.6333090
+            lng: -46.6333090
           }} />
         <InfoWindow onClose={this.onInfoWindowClose}>
           <div>

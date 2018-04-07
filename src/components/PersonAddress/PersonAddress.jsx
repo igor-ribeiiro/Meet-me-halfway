@@ -7,7 +7,7 @@ class PersonAddress extends Component {
         return <SearchBar handleInput= {(lat, lng) => {
           window.globalPos.push({
             lat: -23.59,
-            lon: -46.68
+            lng: -46.68
           });
         	console.log(window.globalPos[0]);
         }} />
