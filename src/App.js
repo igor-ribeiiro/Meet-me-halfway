@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/header/header.jsx'
-import Input from './components/input/input.jsx'
+import Main from './components/main/main.jsx'
 import Map from './components/map/map.jsx'
 
 class App extends Component {
@@ -9,8 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header/>
-        <Input/>
-        <Map/>
+        <Main/>
       </div>
     );
   }

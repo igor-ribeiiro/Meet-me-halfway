@@ -3,6 +3,10 @@ import "./header.css"
 import logo from './logo.svg';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
@@ -11,7 +15,7 @@ class Header extends Component {
           <h1 className="App-title">Welcome to When2meet</h1>
         </header>
         <p className="App-intro">
-          To get started, type 4 pos
+          To get started, type 4 positions
         </p>
       </div>
     );
