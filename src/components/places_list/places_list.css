@@ -1,0 +1,36 @@
+.PlacesList {
+    margin: 0;
+    padding: 0;
+}
+
+.PlacesList div {
+    margin: 20px;
+}
+
+.PlacesList ul {
+    list-style-type: none;
+    width: 500px;
+}
+
+.PlacesList h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+.PlacesList li img {
+    float: left;
+    margin: 0 15px 0 0;
+}
+
+.PlacesList li p {
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+.PlacesList li {
+    padding: 10px;
+    overflow: auto;
+}
+
+.PlacesList li:hover {
+    background: #eee;
+    cursor: pointer;
+}

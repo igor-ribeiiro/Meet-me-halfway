@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 class PlacesList extends Component {
   constructor(props) {
     super(props);
-    this.NumberList = this.NumberList.bind(this);
+    this.getPlacesList = this.getPlacesList.bind(this);
   }
 
-  NumberList() {
+  getPlacesList() {
     const numbers = this.props.numbers;
     const listItems = numbers.map((number) =>
       <li key={number.toString()}>
@@ -21,7 +21,39 @@ class PlacesList extends Component {
   render() {
     return (
       <div className="PlacesList">
-        {this.NumberList()}
+        {this.getPlacesList()}
+
+
+        <div>
+          <ul>
+            <li>
+              <img src="http://lorempixum.com/100/100/nature/1" />
+              <h3>Headline</h3>
+              <p>Lorem ipsum dolor sit amet...</p>
+            </li>
+
+            <li>
+              <img src="http://lorempixum.com/100/100/nature/2" />
+              <h3>Headline</h3>
+              <p>Lorem ipsum dolor sit amet...</p>
+            </li>
+
+            <li>
+              <img src="http://lorempixum.com/100/100/nature/3" />
+              <h3>Headline</h3>
+              <p>Lorem ipsum dolor sit amet...</p>
+            </li>
+
+            <li>
+              <img src="http://lorempixum.com/100/100/nature/4" />
+              <h3>Headline</h3>
+              <p>Lorem ipsum dolor sit amet...</p>
+            </li>
+          </ul>
+        </div>
+
+
+
       </div>
     );
   }
