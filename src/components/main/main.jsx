@@ -7,6 +7,7 @@ import '../../App.css';
 class Main extends Component {
   constructor(props) {
     super(props);
+
     this.markers = [
       {
         "name" : "Dolores park",
@@ -25,6 +26,46 @@ class Main extends Component {
     if (coords.length < 4)
       alert("Missing address!");
     else
+      var originList = [];
+      for (var pos of coords) {
+        originList.push({ 'lat': pos.lat, 'lng': pos.lng });
+      }
+
+      var destinationList = [];
+      for (var cafe of window.cafes) {
+        destinationList.push({ lat: cafe.lat, lng: cafe.lng });
+      }
+
+      var service = new window.googleHack.maps.DistanceMatrixService();
+      service.getDistanceMatrix(
+        {
+          origins: originList,
+          destinations: destinationList,
+          travelMode: 'DRIVING',
+          unitSystem: window.googleHack.maps.UnitSystem.METRIC,
+          avoidHighways: false,
+          avoidTolls: false
+        }, callback);
+
+      function callback(response, status) {
+        if (status !== 'OK') {
+          console.log('Error', status);
+          return;
+        }
+        console.log(response);
+        var originList = response.originAddresses;
+        var destinationList = response.destinationAddresses;
+        for (var i = 0; i < originList.length; i++) {
+          var results = response.rows[i].elements;
+             
+          for (var j = 0; j < results.length; j++) {
+             console.log(originList[i] + ' to ' + destinationList[j] +
+                ': ' + results[j].distance.text + ' in ' +
+                results[j].duration.text);
+          }
+        }
+      }
+
       alert("Calculate Here!");
   }
 

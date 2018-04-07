@@ -10,6 +10,8 @@ export class MapContainer extends Component {
       address: 'San Francisco, CA'
     };
     this.getMarkerList = this.getMarkerList.bind(this);
+
+    window.googleHack = this.props.google;
   }
 
   getMarkerList(markers) {
