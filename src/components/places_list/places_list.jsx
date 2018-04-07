@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import "./places_list.css"
+import MapContainer from '../map/map.jsx'
 
 import img1 from './gatinho1.jpeg';
 import img2 from './gatinho2.jpg';
@@ -21,13 +22,12 @@ class PlacesList extends Component {
           </div>
           <img className="d-flex align-self-start" src={place.photo} alt="Gatinho!"/>
             <div className="media-body pl-3">
-              <div className="price">{place.name}<small>{place.address}</small></div>
+              <div className="price">{place.name}<small>{place.city}</small></div>
               <div className="stats">
                 <span><i className="fa fa-arrows-alt"></i>1678 Sq ft</span>
                 <span><i className="fa fa-bath"></i>2 Beadrooms</span>
               </div>
-              <div className="address">4062 Walnut Hill Drive
-                Cincinnati</div>
+              <div className="address">{place.address}</div>
             </div>
         </div>
       </li>
@@ -45,22 +45,26 @@ class PlacesList extends Component {
       {
         "name": "name1",
         "address": "rua 1",
-        "photo": img1
+        "photo": img1,
+        "city": "cidade1"
       },
       {
         "name": "name2",
         "address": "rua 2",
-        "photo": img2
+        "photo": img2,
+        "city": "cidade2"
       },
       {
         "name": "name3",
         "address": "rua 3",
-        "photo": img3
+        "photo": img3,
+        "city": "cidade3"
       },
       {
         "name": "name4",
         "address": "rua 4",
-        "photo": img1
+        "photo": img1,
+        "city": "cidade4"
       }
     ];
 
@@ -70,7 +74,7 @@ class PlacesList extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-7 map-box mx-0 px-0">
-                <iframe width="100%" height="495" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&815&sspn=8.047465,13.666992&ie=UTF8&hq=&hnear=15+Springfield+Way,+Hythe+CT21+5SH,+United+Kingdom&t=m&z=14&ll=51.077429,1.121722&output=embed"></iframe>
+                <MapContainer/>
               </div>
               <div className="col-md-12 listing-block">
                 <ul>
