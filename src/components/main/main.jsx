@@ -14,13 +14,13 @@ class Main extends Component {
       alert("Calculate Here!");
   }
 
-  
+
   render() {
     return (
       <div className="Main">
-        {/* <AddressWrapper onClick = {this.Calculate}/> */}
-        {/* <PlacesList/> */}
-        <div class="row">
+        <AddressWrapper onClick = {this.Calculate}/>
+        <PlacesList/>
+        {/* <div class="row">
           <div class="col-md-6">
             <AddressContainer/>
           </div>
@@ -42,7 +42,7 @@ class Main extends Component {
           <div class="col-md-12">
             <PlacesList/>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
