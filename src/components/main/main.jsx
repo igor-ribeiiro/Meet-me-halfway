@@ -18,36 +18,8 @@ class Main extends Component {
   render() {
     return (
       <div className="Main">
-<<<<<<< HEAD
-        <br></br>
-        <div class="row">
-=======
         <AddressWrapper onClick = {this.Calculate}/>
         <PlacesList/>
-        {/* <div class="row">
->>>>>>> 78efad1fbc75eab9168e136eec35e818743aed5c
-          <div class="col-md-6">
-            <AddressContainer/>
-          </div>
-          <div class="col-md-6">
-            <AddressContainer/>
-          </div>
-        </div>
-        <br></br>
-        <div class="row">
-          <div class="col-md-6">
-            <AddressContainer/>
-          </div>
-          <div class="col-md-6">
-            <AddressContainer/>
-          </div>
-        </div>
-        <br></br>
-        <div class="row">
-          <div class="col-md-12">
-            <PlacesList/>
-          </div>
-        </div> */}
       </div>
     );
   }

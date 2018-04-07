@@ -9,7 +9,7 @@ class AddressWrapper extends Component {
         this.state = {
             "coord" : []
         };
-    
+
          this.handleInput = this.handleInput.bind(this);
     }
 
@@ -22,15 +22,26 @@ class AddressWrapper extends Component {
         })
     }
 
-    
-
     render(){
         return (
             <div>
-                <AddressContainer index = {0} handleInput = {this.handleInput}/>
-                <AddressContainer index = {1} handleInput = {this.handleInput}/>
-                <AddressContainer index = {2} handleInput = {this.handleInput}/>
-                <AddressContainer index = {3} handleInput = {this.handleInput}/>
+                <div class="row">
+                    <div class="col-md-6">
+                      <AddressContainer index = {0} handleInput = {this.handleInput}/>
+                    </div>
+                    <div class="col-md-6">
+                      <AddressContainer index = {1} handleInput = {this.handleInput}/>
+                    </div>
+                  </div>
+                  <br></br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <AddressContainer index = {2} handleInput = {this.handleInput}/>
+                    </div>
+                    <div class="col-md-6">
+                      <AddressContainer index = {3} handleInput = {this.handleInput}/>
+                    </div>
+                  </div>
                 <button onClick = {() => {this.props.onClick(this.state.coord);}}>
                     Calculate!
                 </button>
