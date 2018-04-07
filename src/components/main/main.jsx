@@ -7,6 +7,7 @@ class Main extends Component {
   render() {
     return (
       <div className="Main">
+        <br></br>
         <div class="row">
           <div class="col-md-6">
             <PersonAddress/>

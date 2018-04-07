@@ -15,17 +15,19 @@ class PlacesList extends Component {
   }
 
   getPlacesList(places) {
+    console.log(places);
     const listItems = places.map((place) =>
       <li key={place.name.toString()}>
         <div className="media">
-          <div className="fav-box"><i className="fa fa-heart-o" aria-hidden="true"></i>
-          </div>
+
           <img className="d-flex align-self-start" src={place.photo} alt="Gatinho!"/>
             <div className="media-body pl-3">
-              <div className="price">{place.name}<small>{place.city}</small></div>
+              <span><i className="fa fa-apple"></i>{place.name}</span><br></br>
               <div className="stats">
-                <span><i className="fa fa-arrows-alt"></i>1678 Sq ft</span>
-                <span><i className="fa fa-bath"></i>2 Beadrooms</span>
+                <span><i className="fa fa-car"></i>{place.tempo1} minutos, {place.dist1} km</span><br></br>
+                <span><i className="fa fa-car"></i>{place.tempo2} minutos, {place.dist2} km</span><br></br>
+                <span><i className="fa fa-car"></i>{place.tempo3} minutos, {place.dist3} km</span><br></br>
+                <span><i className="fa fa-car"></i>{place.tempo4} minutos, {place.dist4} km</span><br></br>
               </div>
               <div className="address">{place.address}</div>
             </div>
@@ -43,30 +45,43 @@ class PlacesList extends Component {
   render() {
     let places = [
       {
-        "name": "name1",
-        "address": "rua 1",
-        "photo": img1,
-        "city": "cidade1"
+        'name': "Restaurante x",
+        'tempo1': 123,
+        'dist1': 22,
+        'tempo2': 102,
+        'dist2': 22,
+        'tempo3': 123,
+        'dist3': 22,
+        'tempo4': 123,
+        'dist4': 22,
+        'photo': img1
       },
       {
-        "name": "name2",
-        "address": "rua 2",
-        "photo": img2,
-        "city": "cidade2"
+        'name': "Restaurante y",
+        'tempo1': 123,
+        'dist1': 22,
+        'tempo2': 102,
+        'dist2': 22,
+        'tempo3': 123,
+        'dist3': 22,
+        'tempo4': 123,
+        'dist4': 22,
+        'photo': img1
       },
       {
-        "name": "name3",
-        "address": "rua 3",
-        "photo": img3,
-        "city": "cidade3"
+        'name': "Restaurante z",
+        'tempo1': 123,
+        'dist1': 22,
+        'tempo2': 102,
+        'dist2': 22,
+        'tempo3': 123,
+        'dist3': 22,
+        'tempo4': 123,
+        'dist4': 22,
+        'photo': img1
       },
-      {
-        "name": "name4",
-        "address": "rua 4",
-        "photo": img1,
-        "city": "cidade4"
-      }
-    ];
+    ]
+
 
     return (
       <div className="PlacesList">
