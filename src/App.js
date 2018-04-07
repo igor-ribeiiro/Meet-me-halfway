@@ -9,9 +9,8 @@ class App extends Component {
     return (
       <div className="App">
         <Header/>
-          <Input/>
+        <Input/>
         <Map/>
-
       </div>
     );
   }
