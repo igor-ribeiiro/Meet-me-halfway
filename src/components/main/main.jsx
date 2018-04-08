@@ -19,8 +19,9 @@ class Main extends Component {
     this.Calculate = this.Calculate.bind(this);
   }
 
-  Calculate() {
-    if (this.state.coords.length < 4) {
+  Calculate(){
+    if (this.state.coord.length < 4)
+    {
       alert("Missing address!");
       return;
     }
