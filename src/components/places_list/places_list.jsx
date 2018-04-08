@@ -45,10 +45,7 @@ class PlacesList extends Component {
 
   getPlacesList(places) {
     let listItems;
-    console.log(places);
     if(places !== undefined) {
-      console.log("Crossed the undefined behavior");
-      console.log(places[0]);
       listItems = places.map((place, i) =>
         <li key={place.name.toString()} onClick={() => x.changeActivePlace(place.index)}>
           <div className="media">
