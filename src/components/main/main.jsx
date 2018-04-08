@@ -14,15 +14,25 @@ class Main extends Component {
     x = this;
 
     this.state = {
+      "transport": ["bus", "bus", "bus", "bus"],
       "markers" : [],
       "coord" : [],
       "places": undefined
     };
 
     this.handleInput = this.handleInput.bind(this);
+    this.handleTransport = this.handleTransport.bind(this);
     this.Calculate = this.Calculate.bind(this);
 
   }
+
+  handleTransport(mode, i) {
+    this.setState((prevState, props) => {
+        let currState = prevState;
+        currState.transport[i] = mode;
+        return currState;
+    })
+  } 
 
   Calculate() {
     if (this.state.coord.length < 4) {
@@ -45,6 +55,8 @@ class Main extends Component {
       placesDistance.push({ index: i, name: window.cafes[i].desc, lat: window.cafes[i].lat, lng: window.cafes[i].lng, dist: [], tempo: [], address: null });
     }
 
+    var callsCount = 2;
+
     var service = new window.googleHack.maps.DistanceMatrixService();
     service.getDistanceMatrix(
       {
@@ -56,6 +68,15 @@ class Main extends Component {
         avoidTolls: false
       }, drivingCallback);
 
+    service.getDistanceMatrix(
+      {
+        origins: originList,
+        destinations: destinationList,
+        travelMode: 'TRANSIT',
+        unitSystem: window.googleHack.maps.UnitSystem.METRIC,
+        avoidHighways: false,
+        avoidTolls: false
+      }, transitCallback);
 
     function drivingCallback(response, status) {
       if (status !== 'OK') {
@@ -67,6 +88,7 @@ class Main extends Component {
       var destinationList = response.destinationAddresses;
       for (var i = 0; i < originList.length; i++) {
         var results = response.rows[i].elements;
+        if (x.state.transport[i] !== 'car') continue;
 
         for (var j = 0; j < results.length; j++) {
           if (results[j].status !== 'OK') {
@@ -84,6 +106,62 @@ class Main extends Component {
         }
       }
 
+      callsCount--;
+      if (callsCount > 0) return;
+
+      console.log(placesDistance);
+      // sort using most distance as reference
+      placesDistance.sort(function(a, b) {
+        var maxA = 0;
+        var maxB = 0;
+
+        // get maximum
+        for (var t of a.tempo) {
+          maxA = Math.max(maxA, t.value);
+        }
+
+        for (var t of b.tempo) {
+          maxB = Math.max(maxB, t.value);
+        }
+        return maxA - maxB;
+      });
+      x.setState({
+        "places": placesDistance
+      });
+    }
+
+    function transitCallback(response, status) {
+      if (status !== 'OK') {
+        console.log('Error', status);
+        return;
+      }
+
+      var originList = response.originAddresses;
+      var destinationList = response.destinationAddresses;
+      for (var i = 0; i < originList.length; i++) {
+        var results = response.rows[i].elements;
+        if (x.state.transport[i] !== 'bus') continue;
+
+        for (var j = 0; j < results.length; j++) {
+          if (results[j].status !== 'OK') {
+            placesDistance[j].tempo.push({text: 'Not found', value: 1000000 });
+            placesDistance[j].dist.push({text: 'Not found', value: 1000000 });
+            placesDistance[j].address = 'Not found';
+            continue;
+          }
+
+          placesDistance[j].tempo.push(
+            {text: results[j].duration.text, value: results[j].duration.value });
+          placesDistance[j].dist.push(
+            {text: results[j].distance.text, value: results[j].distance.value });
+          placesDistance[j].address = destinationList[j];
+        }
+      }
+
+      callsCount--;
+      if (callsCount > 0) return;
+      
+      console.log(placesDistance);
       // sort using most distance as reference
       placesDistance.sort(function(a, b) {
         var maxA = 0;
@@ -118,7 +196,7 @@ class Main extends Component {
   render() {
     return (
       <div className="Main">
-        <AddressWrapper onClick = {this.Calculate} handleInput = {this.handleInput}/>
+        <AddressWrapper onClick = {this.Calculate} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
         <PlacesList markers={this.state.markers} places={this.state.places}/>
       </div>
     )

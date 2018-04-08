@@ -93,7 +93,8 @@ class PlacesList extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-7 map-box mx-0 px-0">
-                <MapContainer markers={this.props.markers} activePlace = {this.state.activePlace} places = {this.props.places} changeActive = {this.changeActivePlace}/>
+                <MapContainer markers={this.props.markers} activePlace = {this.state.activePlace} places = {this.props.places}
+                              changeActive = {this.changeActivePlace} cafes={this.cafes}/>
               </div>
               <div className="col-md-12 listing-block">
                 <ul>

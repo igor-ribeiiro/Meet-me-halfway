@@ -178,3 +178,7 @@ body, #root, .page-wrapper {
   display: inline-block;
   width: 25%;
 }
+
+.transport-button {
+  float: right;
+}
