@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import SearchBar from '../SearchBar/SearchBar';
 import AddressContainer from '../AddressContainer/AddressContainer';
+import '../../App.css';
+
 
 class AddressWrapper extends Component {
     constructor(props) {
@@ -38,7 +40,7 @@ class AddressWrapper extends Component {
                       <AddressContainer index = {3} handleInput = {this.handleInput}/>
                     </div>
                   </div>
-                <button onClick = {() => {this.props.onClick();}}>
+                <button className="btn" onClick = {() => {this.props.onClick();}}>
                     Calculate!
                 </button>
             </div>
