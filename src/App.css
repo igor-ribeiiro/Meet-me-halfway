@@ -27,7 +27,7 @@ body, #root, .page-wrapper {
   -webkit-border-radius: 12;
   -moz-border-radius: 12;
   border-radius: 5px;
-  font-family: Arial;
+  font-family: "Open Sans", Arial;
   color: #ffffff;
   font-size: 20px;
   background: #ffa200;
@@ -154,9 +154,10 @@ body, #root, .page-wrapper {
 
 .search-bar {
   display: inline-block;
-  margin-left: auto;
+  margin-left: 10%;
   margin-right: auto;
   width: 90%;
+  padding: none;
 }
 
 .suggestion-item {
@@ -181,7 +182,17 @@ body, #root, .page-wrapper {
 }
 
 .transport-button {
-  background-color: rgba(1, 1, 1, 0);
+    border: 0;
+    background: #ffa200;
+    box-shadow: none;
+    border-radius: 0px;
+    height:100%;
+    width: 100%;
+}
+
+.transport-button:hover {
+  background: #ff6f00;
+  text-decoration: none;
 }
 
 .btn2 {

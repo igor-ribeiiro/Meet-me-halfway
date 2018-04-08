@@ -118,6 +118,8 @@ const renderSuggestion = ({ formattedSuggestion }) => (
   
       return (
         <div>
+          <div  className="row">
+            <div className="col-md-11" style={{padding: 0}}>
           <PlacesAutocomplete
             renderSuggestion={renderSuggestion}
             inputProps={inputProps}
@@ -127,7 +129,10 @@ const renderSuggestion = ({ formattedSuggestion }) => (
             onError={onError}
             shouldFetchSuggestions={shouldFetchSuggestions}
           />
-          <button className="" onClick = {this.handleTransport}> <i className = {this.state.transport === "car" ? "fa fa-car" : "fa fa-bus"}></i> </button>
+            </div>
+            <div className="col-md-1" style={{padding: 0}}>
+          <button className="transport-button" onClick = {this.handleTransport}> <i className = {this.state.transport === "car" ? "fa fa-car" : "fa fa-bus"}></i> </button>
+            </div>
           {this.state.loading && (
             <div>
               {/* <i className="fa fa-spinner fa-pulse fa-3x fa-fw Demo__spinner" /> */}
@@ -136,6 +141,7 @@ const renderSuggestion = ({ formattedSuggestion }) => (
           {this.state.geocodeResults && (
             <div className="geocoding-results">{this.state.geocodeResults}</div>
           )}
+          </div>
         </div>
       );
     }
