@@ -51,10 +51,9 @@ class Main extends Component {
           console.log('Error', status);
           return;
         }
-        for (var cafe of window.cafes) {
-          placesDistance.push({ name: cafe.desc, dist: [], tempo: [], address: null });
+        for (var i in window.cafes) {
+          placesDistance.push({ index: i, name: window.cafes[i].desc, dist: [], tempo: [], address: null });
         }
-        console.log(response);
         
         var originList = response.originAddresses;
         var destinationList = response.destinationAddresses;
@@ -69,6 +68,22 @@ class Main extends Component {
              placesDistance[j].address = destinationList[j];
           }
         }
+
+        // sort using most distance as reference
+        placesDistance.sort(function(a, b) {
+          var maxA = 0;
+          var maxB = 0;
+          
+          // get maximum
+          for (var t of a.tempo) {
+            maxA = Math.max(maxA, t.value);
+          }
+
+          for (var t of b.tempo) {
+            maxB = Math.max(maxB, t.value);
+          }
+          return maxA - maxB;
+        });
         console.log(placesDistance);
       }
 
