@@ -9,9 +9,9 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
-
-      </div>
+      <header id="header">
+        <a className="logo">Where2meet</a>
+      </header>
     );
   }
 }

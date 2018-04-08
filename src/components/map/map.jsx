@@ -10,6 +10,8 @@ export class MapContainer extends Component {
       address: 'San Francisco, CA'
     };
     this.getMarkerList = this.getMarkerList.bind(this);
+
+    window.googleHack = this.props.google;
   }
 
   getMarkerList(markers) {
@@ -39,27 +41,8 @@ export class MapContainer extends Component {
                     lng: -46.6333090
                   }}
                   zoom={13}>
-        {/*<Marker onClick={this.onMarkerClick}*/}
-                {/*name={'Current location'} />*/}
-        {/*<Marker*/}
-          {/*key = {1}*/}
-          {/*name = {"test"}*/}
-          {/*position={{*/}
-            {/*lat: -23.57052,*/}
-            {/*lng: -46.6333090*/}
-          {/*}}*/}
-        {/*/>*/}
 
         {markers}
-
-        {/*{*/}
-          {/*Array.prototype.forEach.call(markers, marker => {*/}
-            {/*console.log(marker);*/}
-          {/*})*/}
-        {/*}*/}
-
-
-
 
         <InfoWindow onClose={this.onInfoWindowClose}>
           <div>
