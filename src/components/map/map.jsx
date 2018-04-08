@@ -3,6 +3,7 @@ import "./map.css"
 
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
+
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +29,14 @@ export class MapContainer extends Component {
     );
   }
 
+  fetchPlaces(mapProps, map) {
+    window.globalMap = map;
+    window.directionsService = new window.googleHack.maps.DirectionsService;
+    window.directionsDisplay = new window.googleHack.maps.DirectionsRenderer;
+    window.directionsDisplay.setMap(map);
+  }
+
+
   render() {
     const markers = this.getMarkerList(this.props.markers);
 
@@ -37,6 +46,7 @@ export class MapContainer extends Component {
                     lat: -23.5505200,
                     lng: -46.6333090
                   }}
+                  onReady={this.fetchPlaces}
                   zoom={13}>
 
         {markers}

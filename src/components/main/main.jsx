@@ -97,6 +97,25 @@ class Main extends Component {
 
     alert("Calculate Here!");
 
+
+    window.directionsService.route({
+      origin: {
+        lat: -23.5705200,
+        lng: -46.6333090
+      },
+      destination: {
+        lat: -23.5505200,
+        lng: -46.6133090
+      },
+      travelMode: 'DRIVING'
+    }, function(response, status) {
+      if (status === 'OK') {
+        window.directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+
   }
 
   handleInput(lat, lng, i) {
