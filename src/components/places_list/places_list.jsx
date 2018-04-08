@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import "./places_list.css"
-import MapContainer from '../map/map.jsx'
-
+import MapContainer from '../map/map.jsx';
+import Loader from "./../loader/loader.jsx";
 import cafe0 from './places-pic/cafe0.jpg';
 import cafe1 from './places-pic/cafe1.jpg';
 import cafe2 from './places-pic/cafe2.jpg';
@@ -98,9 +98,10 @@ class PlacesList extends Component {
                               changeActive = {this.changeActivePlace} cafes={this.cafes}/>
               </div>
               <div className="col-md-12 listing-block">
+                {this.props.loading ? <Loader/> :
                 <ul>
                   {this.getPlacesList(this.props.places)}
-                </ul>
+                </ul>}
               </div>
 
             </div>

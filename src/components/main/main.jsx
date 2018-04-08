@@ -106,7 +106,7 @@ class Main extends Component {
           avoidHighways: false,
           avoidTolls: false
         }, transitCallback);  
-      }, 2500);
+      }, 3000);
     }
 
     function transitCallback(response, status) {
@@ -186,7 +186,8 @@ class Main extends Component {
     return (
       <div className="Main">
         <AddressWrapper onClick = {this.Calculate} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
-        <PlacesList markers={this.state.markers} places={this.state.places} transport = {this.state.transport}/>
+        <PlacesList markers={this.state.markers} places={this.state.places} transport = {this.state.transport}
+                    loading={this.state.loading}/>
       </div>
     )
   }
