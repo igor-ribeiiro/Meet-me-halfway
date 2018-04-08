@@ -50,6 +50,11 @@ class Main extends Component {
       destinationList.push({ lat: cafe.lat, lng: cafe.lng });
     }
 
+    var placesDistance = [];
+    for (var i in window.cafes) {
+      placesDistance.push({ index: i, name: window.cafes[i].desc, lat: window.cafes[i].lat, lng: window.cafes[i].lng, dist: [], tempo: [], address: null });
+    }
+
     var service = new window.googleHack.maps.DistanceMatrixService();
     service.getDistanceMatrix(
       {
@@ -59,17 +64,13 @@ class Main extends Component {
         unitSystem: window.googleHack.maps.UnitSystem.METRIC,
         avoidHighways: false,
         avoidTolls: false
-      }, callback);
+      }, drivingCallback);
 
-    var placesDistance = [];
 
-    function callback(response, status) {
+    function drivingCallback(response, status) {
       if (status !== 'OK') {
         console.log('Error', status);
         return;
-      }
-      for (var i in window.cafes) {
-        placesDistance.push({ index: i, name: window.cafes[i].desc, lat: window.cafes[i].lat, lng: window.cafes[i].lng, dist: [], tempo: [], address: null });
       }
 
       var originList = response.originAddresses;
@@ -78,11 +79,18 @@ class Main extends Component {
         var results = response.rows[i].elements;
 
         for (var j = 0; j < results.length; j++) {
-           placesDistance[j].tempo.push(
+          if (results[j].status !== 'OK') {
+            placesDistance[j].tempo.push({text: 'Not found', value: 1000000 });
+            placesDistance[j].dist.push({text: 'Not found', value: 1000000 });
+            placesDistance[j].address = 'Not found';
+            continue;
+          }
+
+          placesDistance[j].tempo.push(
             {text: results[j].duration.text, value: results[j].duration.value });
-           placesDistance[j].dist.push(
+          placesDistance[j].dist.push(
             {text: results[j].distance.text, value: results[j].distance.value });
-           placesDistance[j].address = destinationList[j];
+          placesDistance[j].address = destinationList[j];
         }
       }
 

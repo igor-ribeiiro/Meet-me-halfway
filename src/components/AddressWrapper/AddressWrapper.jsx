@@ -46,9 +46,11 @@ class AddressWrapper extends Component {
                       <AddressContainer index = {3} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
                     </div>
                   </div>
-                <button className="btn" onClick = {() => {this.props.onClick();}}>
-                    Calculate!
+                <button style={{position: 'absolute', top: '20vh', left: '103.5vh'}} className="btn" onClick = {() => {this.props.onClick();}}>
+                    Meet!
                 </button>
+                <br></br>
+
             </div>
         );
     }
