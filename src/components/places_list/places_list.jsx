@@ -36,10 +36,11 @@ class PlacesList extends Component {
   }
 
   changeActivePlace(index) {
-    this.setState({
-      "activePlace": index
-    })
-
+    if(index !== this.state.activePlace) {
+      this.setState({
+        "activePlace": index
+      })
+    }
 
   }
 
@@ -58,7 +59,6 @@ class PlacesList extends Component {
                 <span><i className="fa fa-car"></i>{place.tempo[2].text}, {place.dist[2].text}</span><br></br>
                 <span><i className="fa fa-car"></i>{place.tempo[3].text}, {place.dist[3].text}</span><br></br>
               </div>
-              <div className="address">{place.address}</div>
             </div>
           </div>
         </li>

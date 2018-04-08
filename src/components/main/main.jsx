@@ -90,7 +90,6 @@ class Main extends Component {
         }
         return maxA - maxB;
       });
-      console.log(placesDistance);
       x.setState({
         "places": placesDistance
       });
@@ -111,9 +110,6 @@ class Main extends Component {
 
 
   render() {
-
-    console.log(this.state.places);
-
     return (
       <div className="Main">
         <AddressWrapper onClick = {this.Calculate} handleInput = {this.handleInput}/>

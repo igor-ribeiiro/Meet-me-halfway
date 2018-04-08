@@ -21,8 +21,8 @@ body{background: #24C6DC;  /* fallback for old browsers */
 .PlacesList .listing-block{background:#fff; height:500px; padding-top:20px; overflow-y:scroll;}
 .PlacesList .slimScrollDiv{width:41%!important;}
 .PlacesList .media {background:#fff; position:relative; margin-bottom:15px;}
-.PlacesList .media img{width:200px;margin:0; height:136px;}
-.PlacesList .media-body{border:1px solid #bcbcbc; border-left:0; height:136px;}
+.PlacesList .media img{width:200px;margin:0; height:160px;}
+.PlacesList .media-body{border:1px solid #bcbcbc; border-left:0; height:160px;}
 .PlacesList .media .price{float:left; width:100%; font-size:30px;font-weight:600; color:#4765AB;}
 .PlacesList .media .price small{display:block; font-size:17px; color:#232323;}
 .PlacesList .media .stats{float:left; width:100%; margin-top:10px;}
