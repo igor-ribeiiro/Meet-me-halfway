@@ -3,6 +3,7 @@ import PlacesList from "../places_list/places_list";
 import AddressWrapper from '../AddressWrapper/AddressWrapper';
 import AddressContainer from '../AddressContainer/AddressContainer';
 import '../../App.css';
+import img1 from '../places_list/gatinho1.jpeg';
 
 class Main extends Component {
   constructor(props) {
@@ -10,16 +11,16 @@ class Main extends Component {
 
     this.state = {
       "markers" : [],
-      "coord" : []
+      "coord" : [],
+      "places": []
     };
 
     this.handleInput = this.handleInput.bind(this);
     this.Calculate = this.Calculate.bind(this);
   }
 
-  Calculate(){
-    if (this.state.coord.length < 4)
-    {
+  Calculate() {
+    if (this.state.coords.length < 4) {
       alert("Missing address!");
       return;
     }
@@ -86,7 +87,9 @@ class Main extends Component {
         });
         console.log(placesDistance);
       }
-
+      this.setState({
+        "places": placesDistance
+      });
       alert("Calculate Here!");
   }
 
@@ -104,7 +107,7 @@ class Main extends Component {
     return (
       <div className="Main">
         <AddressWrapper onClick = {this.Calculate} handleInput = {this.handleInput}/>
-        <PlacesList markers={this.state.markers}/>
+        <PlacesList markers={this.state.markers} places={this.state.places}/>
       </div>
     )
   }

@@ -6,9 +6,6 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      address: 'San Francisco, CA'
-    };
     this.getMarkerList = this.getMarkerList.bind(this);
 
     window.googleHack = this.props.google;
