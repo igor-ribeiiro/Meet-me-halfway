@@ -50,7 +50,7 @@ class PlacesList extends Component {
       console.log("Crossed the undefined behavior");
       console.log(places[0]);
       listItems = places.map((place, i) =>
-        <li key={place.name.toString()} onClick={() => x.changeActivePlace(place.index)}>
+        <li key={place.name.toString()} onClick={() => x.changeActivePlace(i)}>
           <div className="media">
             <img className="d-flex align-self-start" src={x.cafes[place.index]} alt="Gatinho!"/>
             <div className="media-body pl-3">
@@ -79,7 +79,7 @@ class PlacesList extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-7 map-box mx-0 px-0">
-                <MapContainer markers={this.props.markers}/>
+                <MapContainer markers={this.props.markers} activePlace = {this.state.activePlace} places = {this.props.places}/>
               </div>
               <div className="col-md-12 listing-block">
                 <ul>

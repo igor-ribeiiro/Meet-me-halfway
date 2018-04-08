@@ -28,8 +28,29 @@ export class MapContainer extends Component {
     );
   }
 
+  getPlacesList(places) {
+    let listItems = null;
+    if (places !== undefined)
+    {
+        listItems = places.map((place) =>
+        {
+          <Marker
+            key = {place.name.toString()}
+            position ={{
+              lat: place.lat,
+              lng: place.lng
+            }}
+          />
+        }
+      )
+    }
+
+    return listItems;
+  }
+
   render() {
     const markers = this.getMarkerList(this.props.markers);
+    const places = this.getPlacesList(this.props.places);
 
     return (
       <Map google={this.props.google}
@@ -40,6 +61,7 @@ export class MapContainer extends Component {
                   zoom={13}>
 
         {markers}
+        {places}
 
         <InfoWindow onClose={this.onInfoWindowClose}>
           <div>
