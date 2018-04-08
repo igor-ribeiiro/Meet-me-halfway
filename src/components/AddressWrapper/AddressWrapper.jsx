@@ -42,8 +42,8 @@ class AddressWrapper extends Component {
                   </div>
                   <div className="col-md-1">
                     <br/>
-                    <button style={{margin: "auto", padding: "auto", marginTop: "10px"}} className="btn" onClick = {() => {this.props.onClick();}}>
-                      Meet!
+                    <button style={{margin: "auto", marginLeft: "35px" ,padding: "auto", fontSize: "50px", fontWeight: "bold"}} className="btn" onClick = {() => {this.props.onClick();}}>
+                      Meet
                     </button>
                   </div>
                 </div>
