@@ -7,6 +7,26 @@ import img1 from '../places_list/gatinho1.jpeg';
 
 let x;
 
+
+function Draw(origin, destination){
+  let directionsDisplay = new window.googleHack.maps.DirectionsRenderer;
+  let directionsService = new window.googleHack.maps.DirectionsService;
+
+  directionsDisplay.setOptions({suppressMarkers: true});
+  directionsDisplay.setMap(window.globalMap);
+  directionsService.route({
+    origin: origin,
+    destination: destination,
+    travelMode: 'WALKING'
+  }, function(response, status) {
+    if (status === 'OK') {
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -95,27 +115,9 @@ class Main extends Component {
       });
     }
 
-    alert("Calculate Here!");
-
-
-    window.directionsService.route({
-      origin: {
-        lat: -23.5705200,
-        lng: -46.6333090
-      },
-      destination: {
-        lat: -23.5505200,
-        lng: -46.6133090
-      },
-      travelMode: 'DRIVING'
-    }, function(response, status) {
-      if (status === 'OK') {
-        window.directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Directions request failed due to ' + status);
-      }
-    });
-
+    for(var b of originList){
+      Draw(b, destinationList[0]);
+    }
   }
 
   handleInput(lat, lng, i) {

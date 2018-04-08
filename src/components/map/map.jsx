@@ -31,9 +31,6 @@ export class MapContainer extends Component {
 
   fetchPlaces(mapProps, map) {
     window.globalMap = map;
-    window.directionsService = new window.googleHack.maps.DirectionsService;
-    window.directionsDisplay = new window.googleHack.maps.DirectionsRenderer;
-    window.directionsDisplay.setMap(map);
   }
 
 
