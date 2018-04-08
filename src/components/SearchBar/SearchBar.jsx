@@ -55,7 +55,7 @@ const renderSuggestion = ({ formattedSuggestion }) => (
           this.props.handleInput(lat, lng, this.props.index);
           // console.log('Geocode Success', { lat, lng }); // eslint-disable-line no-console
           this.setState({
-            geocodeResults: this.renderGeocodeSuccess(lat, lng),
+            geocodeResults: null,
             loading: false,
           });
         })
@@ -79,17 +79,6 @@ const renderSuggestion = ({ formattedSuggestion }) => (
       return (
         <div className="alert alert-danger" role="alert">
           <strong>Error!</strong> {err}
-        </div>
-      );
-    }
-  
-    renderGeocodeSuccess(lat, lng) {
-      return (
-        <div className="alert alert-success" role="alert">
-          <strong>Success!</strong> Geocoder found latitude and longitude:{' '}
-          <strong>
-            {lat}, {lng}
-          </strong>
         </div>
       );
     }
