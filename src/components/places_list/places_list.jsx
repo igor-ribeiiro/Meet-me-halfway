@@ -49,18 +49,35 @@ class PlacesList extends Component {
     if(places !== undefined) {
       listItems = places.map((place, i) =>
         <li key={place.name.toString()} onClick={() => x.changeActivePlace(i)}>
-          <div className="media">
-            <img className="d-flex align-self-start" src={x.cafes[place.index]} alt="Gatinho!"/>
-            <div className="media-body pl-3">
-              <span><i className="fa fa-apple"></i>{place.name}</span><br></br>
-              <div className="stats">
-                <span><i className="fa fa-car"></i>{place.tempo[0].text}, {place.dist[0].text}</span><br></br>
-                <span><i className="fa fa-car"></i>{place.tempo[1].text}, {place.dist[1].text}</span><br></br>
-                <span><i className="fa fa-car"></i>{place.tempo[2].text}, {place.dist[2].text}</span><br></br>
-                <span><i className="fa fa-car"></i>{place.tempo[3].text}, {place.dist[3].text}</span><br></br>
+            {i == this.state.activePlace ? (
+            <div className="media" style={{background: '#B8B8B8'}}>
+              <img className="d-flex align-self-start" src={x.cafes[place.index]} alt="Gatinho!"/>
+              <div className="media-body pl-3">
+                <span><i className="fa fa-apple"></i>{place.name}</span><br></br>
+                <div className="stats">
+                  <span><i className="fa fa-car"></i>{place.tempo[0].text}, {place.dist[0].text}</span><br></br>
+                  <span><i className="fa fa-car"></i>{place.tempo[1].text}, {place.dist[1].text}</span><br></br>
+                  <span><i className="fa fa-car"></i>{place.tempo[2].text}, {place.dist[2].text}</span><br></br>
+                  <span><i className="fa fa-car"></i>{place.tempo[3].text}, {place.dist[3].text}</span><br></br>
+                </div>
               </div>
             </div>
-          </div>
+            ) : (
+              <div className="media">
+                <img className="d-flex align-self-start" src={x.cafes[place.index]} alt="Gatinho!"/>
+                <div className="media-body pl-3">
+                  <span><i className="fa fa-apple"></i>{place.name}</span><br></br>
+                  <div className="stats">
+                    <span><i className="fa fa-car"></i>{place.tempo[0].text}, {place.dist[0].text}</span><br></br>
+                    <span><i className="fa fa-car"></i>{place.tempo[1].text}, {place.dist[1].text}</span><br></br>
+                    <span><i className="fa fa-car"></i>{place.tempo[2].text}, {place.dist[2].text}</span><br></br>
+                    <span><i className="fa fa-car"></i>{place.tempo[3].text}, {place.dist[3].text}</span><br></br>
+                  </div>
+                </div>
+              </div>
+            )}
+
+
         </li>
       );
     }

@@ -44,7 +44,6 @@ class AddressWrapper extends Component {
                     Meet!
                 </button>
                 <br></br>
-
             </div>
         );
     }
