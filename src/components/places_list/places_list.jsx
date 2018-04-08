@@ -19,11 +19,11 @@ import cafe12 from './places-pic/cafe12.jpg';
 import cafe13 from './places-pic/cafe13.jpg';
 import cafe14 from './places-pic/cafe14.jpg';
 
+let x;
 
 class PlacesList extends Component {
   constructor(props) {
     super(props);
-
     this.cafes = [cafe0, cafe1, cafe2, cafe3, cafe4, cafe5, cafe6, cafe7, cafe8,
       cafe9, cafe10, cafe11, cafe12, cafe13, cafe14];
 
@@ -31,7 +31,8 @@ class PlacesList extends Component {
     this.changeActivePlace = this.changeActivePlace.bind(this);
     this.state = {
       "activePlace": 0
-    }
+    };
+    x = this;
   }
 
   changeActivePlace(index) {
@@ -49,9 +50,9 @@ class PlacesList extends Component {
       console.log("Crossed the undefined behavior");
       console.log(places[0]);
       listItems = places.map((place, i) =>
-        <li key={place.name.toString()} onClick={() => this.changeActivePlace(place.index)}>
+        <li key={place.name.toString()} onClick={() => x.changeActivePlace(place.index)}>
           <div className="media">
-            <img className="d-flex align-self-start" src={this.cafes(place.index)} alt="Gatinho!"/>
+            <img className="d-flex align-self-start" src={x.cafes[place.index]} alt="Gatinho!"/>
             <div className="media-body pl-3">
               <span><i className="fa fa-apple"></i>{place.name}</span><br></br>
               <div className="stats">

@@ -90,11 +90,12 @@ class Main extends Component {
         }
         return maxA - maxB;
       });
+      console.log(placesDistance);
+      x.setState({
+        "places": placesDistance
+      });
     }
-    console.log(placesDistance);
-    x.setState({
-      "places": placesDistance
-    });
+
     alert("Calculate Here!");
 
   }
