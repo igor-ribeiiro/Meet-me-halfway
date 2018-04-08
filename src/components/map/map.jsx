@@ -141,12 +141,6 @@ export class MapContainer extends Component {
                   zoom={13}>
         {markers}
         {places}
-
-        <InfoWindow
-          position={this.position}
-          visible={this.showingInfoWindow}>
-          {this.html}
-        </InfoWindow>
       </Map>
     );
   }

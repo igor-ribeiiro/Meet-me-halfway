@@ -172,7 +172,7 @@ class Main extends Component {
     return (
       <div className="Main">
         <AddressWrapper onClick = {this.Calculate} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
-        <PlacesList markers={this.state.markers} places={this.state.places}/>
+        <PlacesList markers={this.state.markers} places={this.state.places} transport = {this.state.transport}/>
       </div>
     )
   }
