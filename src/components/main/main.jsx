@@ -94,6 +94,7 @@ class Main extends Component {
         "places": placesDistance
       });
     }
+    console.log(placesDistance)
 
     alert("Calculate Here!");
 
