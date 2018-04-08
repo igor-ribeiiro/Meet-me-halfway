@@ -30,28 +30,24 @@ class AddressWrapper extends Component {
         return (
             <div>
                 <div className="row">
-                    <div className="col-md-6">
+                  <div className="col-md-5">
                       <AddressContainer index = {0} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
-                    </div>
-                    <div className="col-md-6">
+                      <br/>
                       <AddressContainer index = {1} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
-                    </div>
                   </div>
-                  <br></br>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <AddressContainer index = {2} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
-                    </div>
-                    <div className="col-md-6">
-                      <AddressContainer index = {3} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
-                    </div>
+                  <div className="col-md-5">
+                    <AddressContainer index = {2} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
+                    <br/>
+                    <AddressContainer index = {3} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
                   </div>
-                <br></br>
-              <button style={{margin: "auto", padding: "8px", marginTop: "-12px", marginBottom: "10px",
-                          fontSize: "30px"}}
-                      className="btn" onClick = {() => {this.props.onClick();}}>
-                Meet!
-              </button>
+                  <div className="col-md-1">
+                    <br/>
+                    <button style={{margin: "auto", padding: "auto", marginTop: "10px"}} className="btn" onClick = {() => {this.props.onClick();}}>
+                      Meet!
+                    </button>
+                  </div>
+                </div>
+                <br/>
             </div>
         );
     }
