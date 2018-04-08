@@ -9,6 +9,7 @@ html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  overflow-y: hidden;
   text-align: center;
 }
 
@@ -180,5 +181,15 @@ body, #root, .page-wrapper {
 }
 
 .transport-button {
-  float: right;
+  background-color: rgba(1, 1, 1, 0);
+}
+
+.btn2 {
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn2:hover {
+  background: #b5bec4;
+  text-decoration: none;
 }
