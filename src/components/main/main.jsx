@@ -17,7 +17,8 @@ class Main extends Component {
       "transport": ["car", "car", "car", "car"],
       "markers" : [],
       "coord" : [],
-      "places": undefined
+      "places": undefined,
+      "loading": false
     };
 
     this.handleInput = this.handleInput.bind(this);
@@ -39,6 +40,7 @@ class Main extends Component {
       alert("Missing address!");
       return;
     }
+    this.setState({"loading": true});
 
     var originList = [];
     for (var pos of this.state.coord) {
@@ -164,7 +166,8 @@ class Main extends Component {
         return b.index - a.index;
       });
       x.setState({
-        "places": placesDistance
+        "places": placesDistance,
+        "loading": false
       });
     }
   }

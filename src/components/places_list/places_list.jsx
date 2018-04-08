@@ -69,10 +69,10 @@ class PlacesList extends Component {
                 <div className="media-body pl-3">
                   <span><i className=""></i>{place.name}</span><br></br>
                   <div className="stats">
-                    <span><i className="fa fa-car"></i>{place.tempo[0].text}, {place.dist[0].text}</span><br></br>
-                    <span><i className="fa fa-car"></i>{place.tempo[1].text}, {place.dist[1].text}</span><br></br>
-                    <span><i className="fa fa-car"></i>{place.tempo[2].text}, {place.dist[2].text}</span><br></br>
-                    <span><i className="fa fa-car"></i>{place.tempo[3].text}, {place.dist[3].text}</span><br></br>
+                    <span><i className={this.props.transport[0] === "car" ?"fa fa-car" : "fa fa-bus"}></i>{place.tempo[0].text}, {place.dist[0].text}</span><br></br>
+                    <span><i className={this.props.transport[1] === "car" ?"fa fa-car" : "fa fa-bus"}></i>{place.tempo[1].text}, {place.dist[1].text}</span><br></br>
+                    <span><i className={this.props.transport[2] === "car" ?"fa fa-car" : "fa fa-bus"}></i>{place.tempo[2].text}, {place.dist[2].text}</span><br></br>
+                    <span><i className={this.props.transport[3] === "car" ?"fa fa-car" : "fa fa-bus"}></i>{place.tempo[3].text}, {place.dist[3].text}</span><br></br>
                   </div>
                 </div>
               </div>
