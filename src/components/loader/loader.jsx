@@ -28,9 +28,6 @@ class Loader extends Component {
         "loading": prevState + "."
       })
     }
-    setTimeout(500, function() {
-      this.loading();
-    })
   }
 
   render() {
@@ -38,9 +35,9 @@ class Loader extends Component {
       x.loading();
     }, 500);
     return (
-      <div>
-        <div class="loader"></div>
-        {this.state.loading}
+      <div className={"loading"}>
+        <div className="loader"></div>
+        <span>{this.state.loading}</span>
       </div>
     );
   }

@@ -88,10 +88,8 @@ class PlacesList extends Component {
   }
 
   render() {
-    this.state.loading = true;
     return (
       <div className="PlacesList">
-        {this.state.loading ? <Loader/> : <span/>}
         <section className="search-box">
           <div className="container-fluid">
             <div className="row">
@@ -100,9 +98,12 @@ class PlacesList extends Component {
                               changeActive = {this.changeActivePlace} cafes={this.cafes}/>
               </div>
               <div className="col-md-12 listing-block">
+                {this.props.loading ? <Loader/> :
                 <ul>
                   {this.getPlacesList(this.props.places)}
-                </ul>
+                </ul>}
+
+
               </div>
 
             </div>
