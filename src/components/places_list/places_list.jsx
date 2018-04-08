@@ -36,19 +36,17 @@ class PlacesList extends Component {
   }
 
   changeActivePlace(index) {
-    this.setState({
-      "activePlace": index
-    })
-
+    if(index !== this.state.activePlace) {
+      this.setState({
+        "activePlace": index
+      })
+    }
 
   }
 
   getPlacesList(places) {
     let listItems;
-    console.log(places);
     if(places !== undefined) {
-      console.log("Crossed the undefined behavior");
-      console.log(places[0]);
       listItems = places.map((place, i) =>
         <li key={place.name.toString()} onClick={() => x.changeActivePlace(i)}>
           <div className="media">
@@ -61,7 +59,6 @@ class PlacesList extends Component {
                 <span><i className="fa fa-car"></i>{place.tempo[2].text}, {place.dist[2].text}</span><br></br>
                 <span><i className="fa fa-car"></i>{place.tempo[3].text}, {place.dist[3].text}</span><br></br>
               </div>
-              <div className="address">{place.address}</div>
             </div>
           </div>
         </li>
