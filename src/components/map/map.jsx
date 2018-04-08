@@ -118,8 +118,10 @@ export class MapContainer extends Component {
   DrawAll(markers, places){
     if(places != undefined){
       for(var i in markers){
-        if(window.directionsDisplays[i] == null)
-          window.directionsDisplays[i] = new window.googleHack.maps.DirectionsRenderer;
+        if(window.directionsDisplays[i] == null) {
+          var rendererOptions = { preserveViewport: true };
+          window.directionsDisplays[i] = new window.googleHack.maps.DirectionsRenderer(rendererOptions);
+        }
         if(window.directionsServices[i] == null)
           window.directionsServices[i] = new window.googleHack.maps.DirectionsService;
         this.Draw(markers[i], places[this.props.activePlace], window.directionsDisplays[i], window.directionsServices[i]);
