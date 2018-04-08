@@ -58,7 +58,7 @@ class Main extends Component {
         return;
       }
       for (var i in window.cafes) {
-        placesDistance.push({ index: i, name: window.cafes[i].desc, dist: [], tempo: [], address: null });
+        placesDistance.push({ index: i, name: window.cafes[i].desc, lat: window.cafes[i].lat, lng: window.cafes[i].lng, dist: [], tempo: [], address: null });
       }
 
       var originList = response.originAddresses;
