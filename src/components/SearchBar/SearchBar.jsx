@@ -130,7 +130,7 @@ const renderSuggestion = ({ formattedSuggestion }) => (
           <button className="transport-button" onClick = {this.handleTransport}>olá </button>
           {this.state.loading && (
             <div>
-              <i className="fa fa-spinner fa-pulse fa-3x fa-fw Demo__spinner" />
+              {/* <i className="fa fa-spinner fa-pulse fa-3x fa-fw Demo__spinner" /> */}
             </div>
           )}
           {this.state.geocodeResults && (
