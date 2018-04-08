@@ -10,6 +10,7 @@ class AddressContainer extends Component {
         };
     
          this.handleInput = this.handleInput.bind(this);
+         this.handleTransport = this.handleTransport.bind(this);
     }
 
     handleInput(lat, lng, i) {
@@ -20,9 +21,13 @@ class AddressContainer extends Component {
         //});
         //console.log(window.globalPos[0]);
     }
+
+    handleTransport(mode, i){
+        this.props.handleTransport(mode, i);
+    }
     
     render(){
-        return <SearchBar index = {this.props.index} handleInput= {this.handleInput} />
+        return <SearchBar index = {this.props.index} handleInput= {this.handleInput} handleTransport = {this.handleTransport}/>
     }
 }
 

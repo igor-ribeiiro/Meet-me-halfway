@@ -37,10 +37,12 @@ const renderSuggestion = ({ formattedSuggestion }) => (
         address: '',
         geocodeResults: null,
         loading: false,
+        transport: "car"
       };
   
       this.handleSelect = this.handleSelect.bind(this);
       this.handleChange = this.handleChange.bind(this);
+      this.handleTransport = this.handleTransport.bind(this);
     }
   
     handleSelect(address) {
@@ -73,6 +75,20 @@ const renderSuggestion = ({ formattedSuggestion }) => (
         address,
         geocodeResults: null,
       });
+    }
+
+    handleTransport() {
+        let mode = "car";
+        if (this.state.transport === "car"){
+            mode = "bus";
+            this.state.transport = "bus";
+        }
+        else {
+            mode = "car";
+            this.state.transport = "car";
+        }
+
+        this.props.handleTransport(mode, this.props.index);
     }
   
     renderGeocodeFailure(err) {
@@ -111,6 +127,7 @@ const renderSuggestion = ({ formattedSuggestion }) => (
             onError={onError}
             shouldFetchSuggestions={shouldFetchSuggestions}
           />
+          <button className="transport-button" onClick = {this.handleTransport}>olá </button>
           {this.state.loading && (
             <div>
               <i className="fa fa-spinner fa-pulse fa-3x fa-fw Demo__spinner" />

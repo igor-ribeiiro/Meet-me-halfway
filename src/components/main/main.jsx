@@ -14,14 +14,24 @@ class Main extends Component {
     x = this;
 
     this.state = {
+      "transport": ["car", "car", "car", "car"],
       "markers" : [],
       "coord" : [],
       "places": undefined
     };
 
     this.handleInput = this.handleInput.bind(this);
+    this.handleTransport = this.handleTransport.bind(this);
     this.Calculate = this.Calculate.bind(this);
   }
+
+  handleTransport(mode, i) {
+    this.setState((prevState, props) => {
+        let currState = prevState;
+        currState.transport[i] = mode;
+        return currState;
+    })
+  } 
 
   Calculate() {
     if (this.state.coord.length < 4) {
@@ -132,7 +142,7 @@ class Main extends Component {
   render() {
     return (
       <div className="Main">
-        <AddressWrapper onClick = {this.Calculate} handleInput = {this.handleInput}/>
+        <AddressWrapper onClick = {this.Calculate} handleInput = {this.handleInput} handleTransport = {this.handleTransport}/>
         <PlacesList markers={this.state.markers} places={this.state.places}/>
       </div>
     )
