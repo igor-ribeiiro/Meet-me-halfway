@@ -14,7 +14,7 @@ class Main extends Component {
     x = this;
 
     this.state = {
-      "transport": ["bus", "bus", "bus", "bus"],
+      "transport": ["car", "car", "car", "car"],
       "markers" : [],
       "coord" : [],
       "places": undefined
@@ -55,8 +55,6 @@ class Main extends Component {
       placesDistance.push({ index: i, name: window.cafes[i].desc, lat: window.cafes[i].lat, lng: window.cafes[i].lng, dist: [], tempo: [], address: null });
     }
 
-    var callsCount = 2;
-
     var service = new window.googleHack.maps.DistanceMatrixService();
     service.getDistanceMatrix(
       {
@@ -67,26 +65,16 @@ class Main extends Component {
         avoidHighways: false,
         avoidTolls: false
       }, drivingCallback);
-
-    service.getDistanceMatrix(
-      {
-        origins: originList,
-        destinations: destinationList,
-        travelMode: 'TRANSIT',
-        unitSystem: window.googleHack.maps.UnitSystem.METRIC,
-        avoidHighways: false,
-        avoidTolls: false
-      }, transitCallback);
-
+    
     function drivingCallback(response, status) {
       if (status !== 'OK') {
         console.log('Error', status);
         return;
       }
 
-      var originList = response.originAddresses;
-      var destinationList = response.destinationAddresses;
-      for (var i = 0; i < originList.length; i++) {
+      var _originList = response.originAddresses;
+      var _destinationList = response.destinationAddresses;
+      for (var i = 0; i < _originList.length; i++) {
         var results = response.rows[i].elements;
         if (x.state.transport[i] !== 'car') continue;
 
@@ -102,32 +90,21 @@ class Main extends Component {
             {text: results[j].duration.text, value: results[j].duration.value });
           placesDistance[j].dist.push(
             {text: results[j].distance.text, value: results[j].distance.value });
-          placesDistance[j].address = destinationList[j];
+          placesDistance[j].address = _destinationList[j];
         }
       }
 
-      callsCount--;
-      if (callsCount > 0) return;
-
-      console.log(placesDistance);
-      // sort using most distance as reference
-      placesDistance.sort(function(a, b) {
-        var maxA = 0;
-        var maxB = 0;
-
-        // get maximum
-        for (var t of a.tempo) {
-          maxA = Math.max(maxA, t.value);
-        }
-
-        for (var t of b.tempo) {
-          maxB = Math.max(maxB, t.value);
-        }
-        return maxA - maxB;
-      });
-      x.setState({
-        "places": placesDistance
-      });
+      setTimeout(function() {
+        service.getDistanceMatrix(
+        {
+          origins: originList,
+          destinations: destinationList,
+          travelMode: 'TRANSIT',
+          unitSystem: window.googleHack.maps.UnitSystem.METRIC,
+          avoidHighways: false,
+          avoidTolls: false
+        }, transitCallback);  
+      }, 2500);
     }
 
     function transitCallback(response, status) {
@@ -135,6 +112,7 @@ class Main extends Component {
         console.log('Error', status);
         return;
       }
+      console.log('called');
 
       var originList = response.originAddresses;
       var destinationList = response.destinationAddresses;
@@ -158,9 +136,6 @@ class Main extends Component {
         }
       }
 
-      callsCount--;
-      if (callsCount > 0) return;
-      
       console.log(placesDistance);
       // sort using most distance as reference
       placesDistance.sort(function(a, b) {
