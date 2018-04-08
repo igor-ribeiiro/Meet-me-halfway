@@ -127,7 +127,7 @@ const renderSuggestion = ({ formattedSuggestion }) => (
             onError={onError}
             shouldFetchSuggestions={shouldFetchSuggestions}
           />
-          <button className="transport-button" onClick = {this.handleTransport}>olá </button>
+          <button className="btn2" onClick = {this.handleTransport}> <i className = {this.state.transport === "car" ? "fa fa-car" : "fa fa-bus"}></i> </button>
           {this.state.loading && (
             <div>
               {/* <i className="fa fa-spinner fa-pulse fa-3x fa-fw Demo__spinner" /> */}
