@@ -1,4 +1,27 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
+
+
 #map {
-    height: 80px;
+    height: 100px;
     width: 100px;
 }
+
+.media-map {
+    text-align: left;
+}
+
+.media-map h2{float:left; width:100%; color:#fff; margin-bottom:40px; font-size: 14px; position:relative; z-index:3; margin-top:30px}
+.media-map h2 span{font-family: 'Libre Baskerville', serif; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px; font-weight:700}
+.media-map h2 a{color:#fff; font-weight:bold;}
+
+.media-map li {
+    list-style-type: none;
+}
+
+.media-map img{width:63px;margin:0; height:50px; display: inline !important;}
+.media-map .media-body{border:1px solid #bcbcbc; border-left:0; height:50px; display: inline !important;}
+.media-map .media .price{float:left; width:100%; font-size:30px;font-weight:600; color:#4765AB;}
+.media-map .media .price small{display:block; font-size:17px; color:#232323;}
+
+.media-map .map-box{background-color:#A3CCFF;}

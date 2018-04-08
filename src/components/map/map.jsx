@@ -9,11 +9,18 @@ var originIcon = 'https://chart.googleapis.com/chart?' +
 var originSelectedIcon = 'https://chart.googleapis.com/chart?' +
             'chst=d_map_pin_letter&chld=O|FFFF42|000000';
 
+let x;
+
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.getMarkerList = this.getMarkerList.bind(this);
 
+    this.showingInfoWindow = false;
+    this.position = {lat: -23.5505200, lng: -46.6333090};
+    this.html = <div>This should not appear</div>;
+
+    x = this;
     window.googleHack = this.props.google;
     window.directionsServices = [null, null, null, null];
     window.directionsDisplays = [null, null, null, null];
@@ -43,8 +50,19 @@ export class MapContainer extends Component {
         listItems = places.map((place, key) =>
         {
           if(key < 3) {
-            if (key == this.props.activePlace)
+            if (key === this.props.activePlace)
             {
+
+              this.showingInfoWindow = true;
+              this.position = {lat: place.lat, lng: place.lng};
+              this.html = <h3>{place.name}</h3>;
+
+              this.html = (
+                <div className="media-map">
+                  <img className="d-flex align-self-start" src={x.props.cafes[place.index]} alt="Gatinho!"/>
+                </div>
+              );
+
               return(
                 <Marker
                   key = {place.name.toString()}
@@ -121,14 +139,13 @@ export class MapContainer extends Component {
                   }}
                   onReady={this.fetchPlaces}
                   zoom={13}>
-
         {markers}
         {places}
 
-        <InfoWindow onClose={this.onInfoWindowClose}>
-          <div>
-            <h1>ssssdd</h1>
-          </div>
+        <InfoWindow
+          position={this.position}
+          visible={this.showingInfoWindow}>
+          {this.html}
         </InfoWindow>
       </Map>
     );
