@@ -102,8 +102,6 @@ class PlacesList extends Component {
                 <ul>
                   {this.getPlacesList(this.props.places)}
                 </ul>}
-
-
               </div>
 
             </div>

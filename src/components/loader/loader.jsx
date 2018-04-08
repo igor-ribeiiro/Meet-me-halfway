@@ -18,7 +18,7 @@ class Loader extends Component {
 
   loading() {
     const prevState = this.state.loading;
-    if(this.state.loading == "loading...") {
+    if(this.state.loading === "loading...") {
       this.setState({
         "loading": "loading"
       })
@@ -30,10 +30,17 @@ class Loader extends Component {
     }
   }
 
-  render() {
-    setTimeout(function() {
+  componentDidMount() {
+    this.timerId = setInterval(function() {
       x.loading();
     }, 500);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
+
+  render() {
     return (
       <div className={"loading"}>
         <div className="loader"></div>

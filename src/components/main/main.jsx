@@ -106,7 +106,7 @@ class Main extends Component {
           avoidHighways: false,
           avoidTolls: false
         }, transitCallback);  
-      }, 2500);
+      }, 3000);
     }
 
     function transitCallback(response, status) {
