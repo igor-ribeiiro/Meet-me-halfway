@@ -17,9 +17,26 @@ body, #root, .page-wrapper {
   background-color: #fcfcfc;
 }
 
-.btn:hover {
+/* .btn:hover {
   background-color: #e53935;
   border-color: #e53935;
+} */
+
+.btn {
+  -webkit-border-radius: 12;
+  -moz-border-radius: 12;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #ffa200;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #ff6f00;
+  text-decoration: none;
 }
 
 .Demo__github-icon {

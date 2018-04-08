@@ -10,7 +10,7 @@ class Header extends Component {
   render() {
     return (
       <header id="header">
-        <a className="logo">Where2meet</a>
+        <a className="logo">Meet me halfway!</a>
       </header>
     );
   }

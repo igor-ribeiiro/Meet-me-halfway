@@ -23,6 +23,7 @@ class Main extends Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleTransport = this.handleTransport.bind(this);
     this.Calculate = this.Calculate.bind(this);
+
   }
 
   handleTransport(mode, i) {
@@ -104,29 +105,6 @@ class Main extends Component {
         "places": placesDistance
       });
     }
-    console.log(placesDistance)
-
-    alert("Calculate Here!");
-
-
-    window.directionsService.route({
-      origin: {
-        lat: -23.5705200,
-        lng: -46.6333090
-      },
-      destination: {
-        lat: -23.5505200,
-        lng: -46.6133090
-      },
-      travelMode: 'DRIVING'
-    }, function(response, status) {
-      if (status === 'OK') {
-        window.directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Directions request failed due to ' + status);
-      }
-    });
-
   }
 
   handleInput(lat, lng, i) {
