@@ -139,18 +139,29 @@ class Main extends Component {
       console.log(placesDistance);
       // sort using most distance as reference
       placesDistance.sort(function(a, b) {
-        var maxA = 0;
-        var maxB = 0;
+        var maxA = [];
+        var maxB = [];
 
         // get maximum
         for (var t of a.tempo) {
-          maxA = Math.max(maxA, t.value);
+          maxA.push(t.value);
         }
 
         for (var t of b.tempo) {
-          maxB = Math.max(maxB, t.value);
+          maxB.push(t.value);
         }
-        return maxA - maxB;
+        maxA.sort(function(a, b) {
+          return b-a;
+        });
+        maxB.sort(function(a, b) {
+          return b-a;
+        });
+
+        for (var i in maxA) {
+          if (maxA[i] > maxB[i] + 60) return 1;
+          if (maxB[i] > maxA[i] + 60) return -1;
+        }
+        return b.index - a.index;
       });
       x.setState({
         "places": placesDistance
