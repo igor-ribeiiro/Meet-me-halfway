@@ -21,7 +21,7 @@ class Main extends Component {
 
     this.handleInput = this.handleInput.bind(this);
     this.Calculate = this.Calculate.bind(this);
-    
+
   }
 
   Calculate() {

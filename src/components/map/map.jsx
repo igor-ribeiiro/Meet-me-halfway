@@ -40,10 +40,10 @@ export class MapContainer extends Component {
     let listItems = null;
     if (places !== undefined)
     {
-        listItems = places.map((place) =>
+        listItems = places.map((place, key) =>
         {
-          if(place.index < 3) {
-            if (place.index == this.props.activePlace)
+          if(key < 3) {
+            if (key == this.props.activePlace)
             {
               return(
                 <Marker
@@ -66,7 +66,7 @@ export class MapContainer extends Component {
                     lng: place.lng
                   }}
                   icon = {originIcon}
-                  onClick = {() => {this.props.changeActive(place.index);}}
+                  onClick = {() => {this.props.changeActive(key);}}
                 />
               )
             }
@@ -82,7 +82,7 @@ export class MapContainer extends Component {
   }
 
   Draw(origin, destination, directionsDisplay, directionsService){
-    // directionsDisplay.setOptions({suppressMarkers: true});
+    directionsDisplay.setOptions({suppressMarkers: true});
     directionsDisplay.setMap(window.globalMap);
     directionsService.route({
       origin: origin,
