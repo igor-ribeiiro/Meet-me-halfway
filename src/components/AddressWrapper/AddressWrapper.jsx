@@ -15,11 +15,7 @@ class AddressWrapper extends Component {
 
     handleInput(lat, lng, i) {
         //alert("Deu certo!");
-        this.setState((prevState, props) => {
-            let currState = prevState;
-            currState.coord[i] = {"lat": lat, "lng": lng};
-            return currState;
-        })
+        this.props.handleInput(lat, lng, i);
     }
 
     render(){
@@ -42,7 +38,7 @@ class AddressWrapper extends Component {
                       <AddressContainer index = {3} handleInput = {this.handleInput}/>
                     </div>
                   </div>
-                <button onClick = {() => {this.props.onClick(this.state.coord);}}>
+                <button onClick = {() => {this.props.onClick();}}>
                     Calculate!
                 </button>
             </div>
