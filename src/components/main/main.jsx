@@ -18,11 +18,13 @@ class Main extends Component {
   }
 
   Calculate(){
-    if (this.state.coords.length < 4)
+    if (this.state.coord.length < 4)
+    {
       alert("Missing address!");
-    else
+      return;
+    }
       var originList = [];
-      for (var pos of this.state.coords) {
+      for (var pos of this.state.coord) {
         originList.push({ lat: pos.lat, lng: pos.lng });
       }
 
