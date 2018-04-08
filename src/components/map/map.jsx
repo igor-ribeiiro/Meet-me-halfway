@@ -3,6 +3,12 @@ import "./map.css"
 
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
+var originIcon = 'https://chart.googleapis.com/chart?' +
+            'chst=d_map_spin&chld=0.45|0|16A085|13|_|O';
+
+var originSelectedIcon = 'https://chart.googleapis.com/chart?' +
+            'chst=d_map_pin_letter&chld=O|FFFF42|000000';
+
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
@@ -34,15 +40,36 @@ export class MapContainer extends Component {
     {
         listItems = places.map((place) =>
         {
-          <Marker
-            key = {place.name.toString()}
-            position ={{
-              lat: place.lat,
-              lng: place.lng
-            }}
-          />
-        }
-      )
+          if(place.index < 3) {
+            if (place.index == this.props.activePlace)
+            {
+              return(
+                <Marker
+                  key = {place.name.toString()}
+                  position ={{
+                    lat: place.lat,
+                    lng: place.lng
+                  }}
+                  icon = {originSelectedIcon}
+                />
+              )
+            }
+            else
+            {
+              return(
+                <Marker
+                  key = {place.name.toString()}
+                  position ={{
+                    lat: place.lat,
+                    lng: place.lng
+                  }}
+                  icon = {originIcon}
+                  onClick = {() => {this.props.changeActive(place.index);}}
+                />
+              )
+            }
+          }
+      })
     }
 
     return listItems;
