@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import "./places_list.css"
-import MapContainer from '../map/map.jsx'
-
+import MapContainer from '../map/map.jsx';
+import Loader from "./../loader/loader.jsx";
 import cafe0 from './places-pic/cafe0.jpg';
 import cafe1 from './places-pic/cafe1.jpg';
 import cafe2 from './places-pic/cafe2.jpg';
@@ -88,8 +88,10 @@ class PlacesList extends Component {
   }
 
   render() {
+    this.state.loading = true;
     return (
       <div className="PlacesList">
+        {this.state.loading ? <Loader/> : <span/>}
         <section className="search-box">
           <div className="container-fluid">
             <div className="row">
