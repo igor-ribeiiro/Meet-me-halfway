@@ -15,6 +15,8 @@ export class MapContainer extends Component {
     this.getMarkerList = this.getMarkerList.bind(this);
 
     window.googleHack = this.props.google;
+    window.directionsServices = [null, null, null, null];
+    window.directionsDisplays = [null, null, null, null];
   }
 
   getMarkerList(markers) {
@@ -79,11 +81,38 @@ export class MapContainer extends Component {
     window.globalMap = map;
   }
 
+  Draw(origin, destination, directionsDisplay, directionsService){
+    // directionsDisplay.setOptions({suppressMarkers: true});
+    directionsDisplay.setMap(window.globalMap);
+    directionsService.route({
+      origin: origin,
+      destination: destination,
+      travelMode: 'DRIVING'
+    }, function(response, status) {
+      if (status === 'OK') {
+        directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
+
+  DrawAll(markers, places){
+    if(places != undefined){
+      for(var i in markers){
+        if(window.directionsDisplays[i] == null)
+          window.directionsDisplays[i] = new window.googleHack.maps.DirectionsRenderer;
+        if(window.directionsServices[i] == null)
+          window.directionsServices[i] = new window.googleHack.maps.DirectionsService;
+        this.Draw(markers[i], places[this.props.activePlace], window.directionsDisplays[i], window.directionsServices[i]);
+      }
+    }
+  }
 
   render() {
     const markers = this.getMarkerList(this.props.markers);
     const places = this.getPlacesList(this.props.places);
-
+    this.DrawAll(this.props.markers, this.props.places);
     return (
       <Map google={this.props.google}
                   initialCenter={{

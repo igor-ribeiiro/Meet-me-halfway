@@ -7,26 +7,6 @@ import img1 from '../places_list/gatinho1.jpeg';
 
 let x;
 
-
-function Draw(origin, destination){
-  let directionsDisplay = new window.googleHack.maps.DirectionsRenderer;
-  let directionsService = new window.googleHack.maps.DirectionsService;
-
-  directionsDisplay.setOptions({suppressMarkers: true});
-  directionsDisplay.setMap(window.globalMap);
-  directionsService.route({
-    origin: origin,
-    destination: destination,
-    travelMode: 'WALKING'
-  }, function(response, status) {
-    if (status === 'OK') {
-      directionsDisplay.setDirections(response);
-    } else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
-}
-
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +21,7 @@ class Main extends Component {
 
     this.handleInput = this.handleInput.bind(this);
     this.Calculate = this.Calculate.bind(this);
+    
   }
 
   Calculate() {
@@ -113,10 +94,6 @@ class Main extends Component {
       x.setState({
         "places": placesDistance
       });
-    }
-
-    for(var b of originList){
-      Draw(b, destinationList[0]);
     }
   }
 
