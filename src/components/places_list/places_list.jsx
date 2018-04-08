@@ -70,6 +70,27 @@ class PlacesList extends Component {
   }
 
   render() {
+    if(this.props.places !== undefined) {
+      return (
+        <div className="PlacesList">
+          <section className="search-box">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col-md-7 map-box mx-0 px-0">
+                  <MapContainer markers={this.props.markers}/>
+                </div>
+                <div className="col-md-12 listing-block">
+                  <ul>
+                    {this.getPlacesList(this.props.places)}
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        </div>
+      );
+    }
     return (
       <div className="PlacesList">
         <section className="search-box">
@@ -79,16 +100,16 @@ class PlacesList extends Component {
                 <MapContainer markers={this.props.markers} activePlace = {this.state.activePlace} places = {this.props.places} changeActive = {this.changeActivePlace}/>
               </div>
               <div className="col-md-12 listing-block">
-                <ul>
-                  {this.getPlacesList(this.props.places)}
-                </ul>
+                <div className="empty">
+                  empty
+                </div>
               </div>
 
             </div>
           </div>
         </section>
       </div>
-    );
+    )
   }
 }
 
