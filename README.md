@@ -6,6 +6,8 @@ There are some situations you need to meet someone or a group and you are not cl
 
 ## Project
 
+You can see this project online in: [https://meetmehalfway-hackathon.herokuapp.com/](https://meetmehalfway-hackathon.herokuapp.com/)
+
 To run this project, set your Google Map APIs key in src/components/map/map.jsx and in public/index.html and enable the Directions, Place and DistanceMatrixService services. So then,
 ```sh
 npm install
